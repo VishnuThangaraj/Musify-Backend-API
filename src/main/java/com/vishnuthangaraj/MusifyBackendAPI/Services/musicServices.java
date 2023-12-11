@@ -1,7 +1,7 @@
-package com.vishnuthangaraj.Musify.Services;
+package com.vishnuthangaraj.MusifyBackendAPI.Services;
 
-import com.vishnuthangaraj.Musify.Models.*;
-import com.vishnuthangaraj.Musify.Repository.musicRepository;
+import com.vishnuthangaraj.MusifyBackendAPI.Models.*;
+import com.vishnuthangaraj.MusifyBackendAPI.Repository.musicRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

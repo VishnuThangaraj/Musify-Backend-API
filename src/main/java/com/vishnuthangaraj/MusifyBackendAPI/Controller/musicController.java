@@ -1,7 +1,7 @@
-package com.vishnuthangaraj.Musify.Controller;
+package com.vishnuthangaraj.MusifyBackendAPI.Controller;
 
-import com.vishnuthangaraj.Musify.Models.*;
-import com.vishnuthangaraj.Musify.Services.musicServices;
+import com.vishnuthangaraj.MusifyBackendAPI.Models.*;
+import com.vishnuthangaraj.MusifyBackendAPI.Services.musicServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class musicController {
     musicServices musicServices;
 
     // Add user to the Database with given Name and MobileNumber
-    // http://localhost:9797/music/add-user?name=vishnu&mobile=9876545678
+    // http://localhost:8080/music/add-user?name=vishnu&mobile=9876545678
     @PostMapping("/add-user")
     public String createUser(@RequestParam(name = "name")String name, String mobile){
         // Returns the newly Created user object
@@ -24,15 +24,17 @@ public class musicController {
     }
 
     // Add new Artist to the Database with given Name
-    @PostMapping("add-artist")
-    public String createArtist(@RequestParam(name = " name")String name){
+    // http://localhost:8080/music/add-artist?name=anirudh
+    @PostMapping("/add-artist")
+    public String createArtist(@RequestParam(name = "name")String name){
         // Returns the newly Created Artist object
         Artist artist = musicServices.createArtist(name);
         return "Artist Created SuccessFully";
     }
 
     // Create album with given title and artist
-    @PostMapping("add-album")
+    // http://localhost:8080/music/add-album?title=kaithi&artistName=anirudh
+    @PostMapping("/add-album")
     public String createAlbum(@RequestParam(name = "title")String title, String artistName){
         //If the artist does not exist, first create an artist with given name and add creates album
         Album album = musicServices.createAlbum(title, artistName);
@@ -40,15 +42,16 @@ public class musicController {
     }
 
     // Create and Add song to the respective Album
-    @PostMapping("add-song")
-    public String createSong(String name, int length, String albumName) throws Exception{
+    // http://localhost:8080/music/add-song?name=ordinary_person&length=3&albumName=leo
+    @PostMapping("/add-song")
+    public String createSong(@RequestParam(name = "name") String name, int length, String albumName) throws Exception{
         // if the album does-Not exists , throws exception
         Song song = musicServices.createSong(name, length, albumName);
         return "Song Created Successfully";
     }
 
     // Create playlist with given title and add all songs on basis of length.
-    @PostMapping("add-playlist-on-length")
+    @PostMapping("/add-playlist-on-length")
     public String createPlaylistOnLength(String mobile , String title, int length) throws Exception{
         // Create of the playlist will be the give user and will be the only listener at the time of playlist creation
         // Throws Exception if the user does not exist in the database
@@ -57,7 +60,7 @@ public class musicController {
     }
 
     //Create a playlist with given title and add all songs having the given titles in the database to that playlist
-    @PostMapping("add-playlist-on-name")
+    @PostMapping("/add-playlist-on-name")
     public String createPlaylistOnName(String mobile , String title, List<String> songTitles) throws Exception{
         // Create of the playlist will be the give user and will be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
@@ -88,12 +91,14 @@ public class musicController {
     }
 
     // Find the popular Artist based on maximum likes
+    // http://localhost:8080/music/popular-artist
     @GetMapping("/popular-artist")
     public String mostPopularArtist(){
         return musicServices.mostPopularArtist();
     }
 
     // Find the popular Song based on maximum likes
+    // http://localhost:8080/music/popular-song
     @GetMapping("/popular-song")
     public String mostPopularSong(){
         return musicServices.mostPopularSong();

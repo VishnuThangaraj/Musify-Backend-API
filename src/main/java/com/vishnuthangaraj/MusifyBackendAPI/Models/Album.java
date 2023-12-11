@@ -1,4 +1,4 @@
-package com.vishnuthangaraj.Musify.Models;
+package com.vishnuthangaraj.MusifyBackendAPI.Models;
 
 import java.util.Date;
 

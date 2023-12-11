@@ -1,6 +1,6 @@
-package com.vishnuthangaraj.Musify.Repository;
+package com.vishnuthangaraj.MusifyBackendAPI.Repository;
 
-import com.vishnuthangaraj.Musify.Models.*;
+import com.vishnuthangaraj.MusifyBackendAPI.Models.*;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;

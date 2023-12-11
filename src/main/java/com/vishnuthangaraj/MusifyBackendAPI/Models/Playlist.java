@@ -1,4 +1,4 @@
-package com.vishnuthangaraj.Musify.Models;
+package com.vishnuthangaraj.MusifyBackendAPI.Models;
 
 public class Playlist {
     private String title;
